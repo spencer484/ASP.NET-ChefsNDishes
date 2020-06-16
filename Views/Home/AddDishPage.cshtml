@@ -1,0 +1,54 @@
+@model oneDishAndAllChefs;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Dish</title>
+</head>
+<body>
+    <h1>Add a Dish</h1>
+    <a href="/dishes">Home</a>
+
+    <form asp-action="/dishes/new" asp-controller="Home" method="POST">
+    <span asp-validation-for="oneDish.DishName"></span>
+    <label>Name of Dish:</label>
+    <input asp-for="oneDish.DishName">
+    <br>
+    <span asp-validation-for="oneDish.Calories"></span>
+    <label>Calories:</label>
+    <input asp-for="oneDish.Calories">
+    <br>
+    <span asp-validation-for="oneDish.Tastiness"></span>
+    <label>Tastiness:</label>
+    <input asp-for="oneDish.Tastiness" type="number" min="1" max="5">
+    <br>
+    <span asp-validation-for="oneDish.Description"></span>
+    <label>Description:</label>
+    <input asp-for="oneDish.Description" type="textarea">
+    <br>
+    <span asp-validation-for="oneDish.ChefId"></span>
+    @* <select asp-for="ChefId"
+        asp-items="@(new SelectList(ViewBag.Chefs, "ChefId", "FirstName"))">
+    </select> *@
+
+    <select asp-for="oneDish.ChefId">
+        @foreach (Chef item in Model.AllChefs)
+        {
+            <option value="@item.ChefId">@item.FirstName @item.LastName</option>
+        }
+    </select>
+    <br>
+    <button>Add Dish</button>
+
+
+
+
+
+
+
+    </form>
+
+</body>
+</html>

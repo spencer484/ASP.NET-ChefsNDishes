@@ -1,0 +1,38 @@
+@model List<Dish>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dishes</title>
+</head>
+<body>
+    <h1>Dishes Dashboard</h1>
+    <h3> <a href="/chefs">Chefs</a> | Dishes</h3>
+    <br>
+    <a href="/dishes/new">Add a Dish</a>
+    <hr>
+    <h3>Take a look at the Dishes!</h3>
+
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Chef</th>
+            <th>Tastiness</th>
+            <th>Calories</th>
+        </thead>
+        <tbody>
+            @foreach (Dish item in Model)
+            {
+                <tr>
+                    <td>@item.DishName</td>
+                    <td>@item.Chef.FirstName @item.Chef.LastName</td>
+                    <td>@item.Tastiness</td>
+                    <td>@item.Calories</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

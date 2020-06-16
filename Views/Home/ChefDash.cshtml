@@ -1,0 +1,34 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h1>Chefs Dashboard</h1>
+    <h3>Chefs | <a href="/dishes">Dishes</a></h3>
+    <br>
+    <a href="/chefs/new">Add a Chef</a>
+    <h3>Check out our roster of Chefs!</h3>
+    <hr>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Number of Dishes</th>
+        </thead>
+        <tbody>
+            @foreach (Chef item in Model)
+            {
+                <tr>
+                    <td>@item.FirstName @item.LastName</td>
+                    <td>@item.Birthday.ToString("MM/dd/yyyy")</td>
+                    <td>@item.CreatedDishes.Count</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
